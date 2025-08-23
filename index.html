@@ -6,15 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Bitwise" />
-    <meta property="og:description" content="A binary card game." />
+    <meta property="og:title" content="Mechanis Obscura" />
+    <meta property="og:description" content="What if your only way out was to understand the mind of someone who lost theirs? 
+Mechanis Obscura is a psychological escape-room thriller where you explore a twisted mansion filled with deadly puzzles, 
+haunting live-action sequences, and secrets that spill beyond the screen. Solve your way through the madness, if you dare to understand it." />
     <meta property="og:image" content="https://nobudgetstudios.github.io/images/promo_image.png" />
     <meta property="og:url" content="https://nobudgetstudios.github.io/MechanisObscura_Website/" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Antonis Vasileiadis - Musician, Composer, Songwriter">
+    <meta name="twitter:title" content="Mechanis Obscura">
     <meta name="twitter:description" content="What if your only way out was to understand the mind of someone who lost theirs? 
 Mechanis Obscura is a psychological escape-room thriller where you explore a twisted mansion filled with deadly puzzles, 
 haunting live-action sequences, and secrets that spill beyond the screen. Solve your way through the madness, if you dare to understand it." />
@@ -115,13 +117,48 @@ haunting live-action sequences, and secrets that spill beyond the screen. Solve 
             </p>-->
         </section>
 
+        <!--
         <section id="section-4">
             <h2 id="heading-2-4">heading-2-4 #Placeholder</h2>
             <p id="section-text-4">This is a test text. This is a test text. This is a test text. This is a test text. 
                 This is a test text. This is a test text. This is a test text. This is a test text. This is a test text. This is a test text. 
                 This is a test text. This is a test text. This is a test text. This is a test text. #Placeholder
             </p>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeQHxz9rKILNuX4To12xsJ8YaSL2OEwqjAHLf9fZVzQuaqNJQ/viewform?embedded=true" width="750" height="750" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>        </section>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeQHxz9rKILNuX4To12xsJ8YaSL2OEwqjAHLf9fZVzQuaqNJQ/viewform?embedded=true" width="750" height="750" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+            new https://forms.gle/qACi4X3qudz5Ftzc8
+            new https://docs.google.com/forms/d/e/1FAIpQLSfSYgZU62lGugPZfwzO7fjFydnL6xQSW04nfwHlU13seBG7pg/viewform?usp=header
+        </section>
+        -->
+    
+        <section id="section-4">
+            <h2 id="heading-2-4">Join our newsletter</h2>
+            <p id="section-text-4">
+                Leave your email to receive updates. (Your email will be sent securely to our Google Form backend.)
+            </p>
+
+            <!-- Custom UI -->
+            <div class="newsletter-card">
+                <label for="emailInput" class="nl-label">Email</label>
+                <div class="nl-row">
+                <input id="emailInput" type="email" class="nl-input" placeholder="no.budget@studios.com" required />
+                <button id="emailSubmit" class="nl-btn" type="button">
+                    <span class="fas fa-paper-plane"></span> Subscribe
+                </button>
+                </div>
+                <label class="nl-consent">
+                <input type="checkbox" id="consentChk" />
+                I agree to receive emails and accept the Privacy Policy.
+                </label>
+                <p id="nlMsg" class="nl-msg" hidden>Thanks! Please check your inbox.</p>
+                <p id="nlErr" class="nl-err" hidden>Please enter a valid email and accept the terms.</p>
+            </div>
+
+            <!-- Hidden target to prevent redirect -->
+            <iframe name="hidden_iframe" style="display:none"></iframe>
+
+            <!-- Invisible form that posts to Google Forms -->
+            <form id="gform" target="hidden_iframe" method="POST" style="display:none"></form>
+        </section>
     </main>
 
     <footer>
@@ -143,6 +180,7 @@ haunting live-action sequences, and secrets that spill beyond the screen. Solve 
     <script src="./js/dynamicContentLoader.js"></script>
     <script src="./js/debug.js"></script>
     <script src="./js/googleAnalytics.js"></script>
+    <script src="./js/newsletter.js"></script>
 
 </body>
 </html>
