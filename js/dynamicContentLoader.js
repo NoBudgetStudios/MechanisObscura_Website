@@ -13,20 +13,39 @@ const section_4_button_text = "Newsletter";
 
 const heading_1_1 = "Mechanis Obscura"
 const heading_2_1 = "Introduction"
-const section_text_1 = `What if your only way out was to understand the mind of someone who lost theirs? 
-Mechanis Obscura is a psychological escape-room thriller where you explore a twisted mansion filled with deadly puzzles, 
-haunting live-action sequences, and secrets that spill beyond the screen. Solve your way through the madness, if you dare to understand it.​`;
+const section_text_1 = `
+<p>
+  <em>What if your only way out was to understand the mind of someone who lost theirs?</em>
+</p>
+
+<p>
+  <strong>Mechanis Obscura</strong> is a psychological escape-room thriller where you explore a twisted mansion 
+  filled with deadly puzzles, haunting live-action sequences, and secrets that spill beyond the screen. 
+  Solve your way through the madness, if you dare to understand it.
+</p>
+`;
 
 const heading_2_2 = "About"
-const section_text_2 = `What if your only way out was to understand the mind of someone who lost theirs? Mechanis Obscura is a psychological escape-room thriller that challenges not only your logic but your perception of reality. It invites players to dive into the fractured legacy of an eccentric genius with a tragic past, where each puzzle is more than a test — it is a piece of a broken soul. 
+const section_text_2 = `
+<p>
+  You’ve caught their attention by mistake. And now, you must play their game!<br>
+  Trapped in a labyrinthine mansion of gears, traps, and secrets, you’ll confront 
+  intricate mechanical enigmas, hidden chambers, and a haunting narrative told 
+  through unconventional live-action storytelling.
+</p>
 
-Trapped in a labyrinthine mansion built entirely from gears, traps, and secrets, players must solve mechanical enigmas, explore hidden chambers, and uncover a haunting narrative told through unconventional live-action storytelling. 
+<p>Blending psychological tension, puzzle-solving, and narrative depth, <strong>Mechanis Obscura</strong> delivers:</p>
 
-The game fuses psychological tension, puzzle-solving, and storytelling into a deeply immersive and atmospheric experience. Through first-person gameplay, Mechanis Obscura offers 
-• Unconventional live-action storytelling that blends seamlessly with gameplay 
-• Interesting and advanced puzzles integrated into environmental design
-• A deeply immersive and atmospheric experience that grips the player from start to finish 
-• An ARG layer with out-of-game puzzles that unlock additional in-game content, offering players a chance to dive even deeper into the mystery.
+<ul style="margin-left: 20px; padding-left: 20px;">
+  <li>Unconventional live-action storytelling woven seamlessly into gameplay.</li>
+  <li>Complex mechanical puzzles integrated into environmental design.</li>
+  <li>A gripping first-person experience steeped in atmosphere.</li>
+  <li>ARG layers beyond the game, with real-world puzzles unlocking hidden in-game content for those who dare to dig deeper.</li>
+</ul>
+
+<p>
+    <em>To understand the mind of a broken man… you may first have to shatter your own!</em>
+</p>
 `;
 
 const heading_2_3 = "More"
@@ -42,7 +61,8 @@ const footer_copyright = "Mechanis Obscura by Konstantinos Klimantakis - 2025 Al
 //const og_image = "./images/promo-material/qr_promo_image.png";
 //const twitter_image = "./images/promo-material/qr_promo_image.png";
 
-const backgroundImage = "./images/background.png";
+//const backgroundImage = "./images/background.png";
+const backgroundVideo = "./videos/background.mp4";
 
 const promo_image = "./images/promo_image (0).gif";
 
@@ -66,7 +86,8 @@ function updatePageContent() {
     //document.querySelector('meta[property="og:image"]').setAttribute("content", og_image);
     //document.querySelector('meta[name="twitter:image"]').setAttribute("content", twitter_image);
 
-    document.body.style.backgroundImage = `url(${backgroundImage})`;
+    //document.body.style.backgroundImage = `url(${backgroundImage})`;
+    document.body.style.backgroundVideo = `url(${backgroundVideo})`;
     document.body.style.backgroundAttachment = "fixed";
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundRepeat = "no-repeat";
@@ -93,13 +114,13 @@ function updatePageContent() {
     document.getElementById('heading-1-1').textContent = heading_1_1;
 
     //document.getElementById('heading-2-1').textContent = heading_2_1;
-    document.getElementById('section-text-1').textContent = section_text_1;
+    document.getElementById('section-text-1').innerHTML = section_text_1;
     document.getElementById('heading-2-2').textContent = heading_2_2;
     document.getElementById('section-text-2').innerHTML = section_text_2;
     document.getElementById('heading-2-3').textContent = heading_2_3;
     //document.getElementById('section-text-3').textContent = section_text_3;
     document.getElementById('heading-2-4').textContent = heading_2_4;
-    document.getElementById('section-text-4').textContent = section_text_4;
+    document.getElementById('section-text-4').innerHTML = section_text_4;
 
     document.getElementById('footer-copyright').textContent = footer_copyright;    
     
