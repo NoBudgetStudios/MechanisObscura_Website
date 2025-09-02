@@ -48,15 +48,12 @@
      -webkit-tap-highlight-color: transparent;
      accent-color: var(--accent);
    }
-   
    :where(h1,h2){
-     font-family: 'OCR A Std','OCR A Extended',monospace;
      text-align: center;
      margin: var(--space-2) 0;
      font-size: var(--fs-xl);
      line-height: 1.2;
    }
-   
    :where(p){
      margin: var(--space-3) 0;
      font-size: var(--fs-lg);
@@ -75,9 +72,8 @@
    /* ================================
       Layout
       ================================ */
-   main{ padding-block-start: 5rem; } /* μπορείς να το κατεβάσεις αν θέλεις τις ενότητες πιο ψηλά */
+   main{ padding-block-start: 5rem; }
    
-   /* Header */
    header{
      position: sticky; top: 0; inset-inline: 0;
      z-index: 1000;
@@ -89,7 +85,6 @@
      border-bottom: 1px solid var(--border);
    }
    
-   /* Sections */
    section{
      max-width: var(--content-max);
      margin-inline: auto;
@@ -100,7 +95,6 @@
      border-radius: var(--radius);
    }
    
-   /* Footer */
    footer p{
      text-align: center;
      padding: .6rem;
@@ -155,7 +149,7 @@
      border: 1px solid #555;
      border-radius: 8px;
      color: var(--fg);
-     font-size: 1.875rem; /* 30px */
+     font-size: 1.875rem;
      line-height: 1;
    }
    
@@ -185,15 +179,12 @@
    /* ================================
       CTA buttons
       ================================ */
-   /* SAFE centering container for the button(s) */
    .cta-button-container{
-     display: grid;              /* grid = εύκολο κεντράρισμα */
-     place-items: center;        /* κέντρο οριζόντια + κάθετα */
+     display: grid;
+     place-items: center;
      gap: 20px;
      padding-block: 20px;
    }
-   
-   /* Base button */
    .cta-button{
      display: inline-flex; gap: 8px; align-items: center; justify-content: center;
      padding: .9rem 1.25rem;
@@ -203,17 +194,15 @@
      box-shadow: var(--shadow-soft);
      transition: transform .15s, box-shadow .2s, background .2s;
    }
-   
-   /* Newsletter button: keep intrinsic width and center */
+   /* Center + intrinsic width */
    #newsletter-button{
      display: inline-flex;
      justify-content: center; align-items: center;
-     width: max-content;         /* όχι full-width σε mobile */
+     width: max-content;
      max-width: 20rem;
-     margin: 0 auto;             /* επιπλέον εγγύηση κεντραρίσματος */
+     margin: 0 auto;
      text-align: center;
    }
-   
    .cta-button:hover{ transform: translateY(-2px); background:#d90000; box-shadow: 0 6px 12px rgba(255,0,0,.25); }
    .cta-button:focus-visible{ outline: 2px dashed var(--accent); outline-offset: 3px; }
    
@@ -238,7 +227,6 @@
      background: rgba(0,0,0,.9);
    }
    .modal[open]{ display: block; }
-   
    .modal-content{
      position: relative;
      margin-inline: auto;
@@ -273,7 +261,7 @@
    #intro-image{ width: 100%; border-radius: 0; }
    
    /* ================================
-      Newsletter card
+      Newsletter card (overflow-safe)
       ================================ */
    .newsletter-card{
      max-width: 45rem;
@@ -283,12 +271,20 @@
      padding: 24px;
      box-shadow: var(--shadow-strong);
      font-family: 'OCR A Std','OCR A Extended',monospace;
+     overflow: hidden;                 /* cut shadow/hover bleed */
    }
    .newsletter-card .nl-label{
      display: block; margin-block-end: 10px;
      font-weight: 800; font-size: 1.05rem;
    }
-   .newsletter-card .nl-row{ display: flex; gap: 14px; align-items: stretch; }
+   .newsletter-card .nl-row{
+     display: flex; gap: 14px; align-items: stretch;
+     flex-wrap: wrap;                   /* wrap if needed */
+   }
+   .newsletter-card .nl-input,
+   .newsletter-card .nl-btn{
+     min-width: 0;                      /* allow shrink instead of overflow */
+   }
    .newsletter-card .nl-input{
      flex: 1;
      padding: 14px 16px;
@@ -300,17 +296,24 @@
    }
    .newsletter-card .nl-input::placeholder{ color:#666; opacity:1; }
    .newsletter-card .nl-input:focus{ border-color:#6b6bff; box-shadow: 0 0 6px rgba(107,107,255,.6); outline: none; }
+   
    .newsletter-card .nl-btn{
      padding: 14px 18px;
      border-radius: 10px;
      border: 2px solid transparent;
      background: var(--accent); color: var(--fg);
      font-weight: 900; font-size: var(--fs-base); letter-spacing: .2px;
-     white-space: nowrap;
+     max-width: 100%;                   /* never exceed row width */
+     white-space: normal;               /* allow wrapping */
+     overflow-wrap: anywhere;           /* break long words */
      transition: transform .15s, box-shadow .2s, background .2s;
    }
-   .newsletter-card .nl-btn:hover{ transform: translateY(-1px); background:#d90000; box-shadow: 0 6px 12px rgba(255,0,0,.35); }
+   .newsletter-card .nl-btn:hover{
+     transform: translateY(-1px);       /* softer lift */
+     box-shadow: 0 4px 8px rgba(255,0,0,.25);
+   }
    .newsletter-card .nl-btn:disabled{ opacity: .55; cursor: not-allowed; box-shadow: none; }
+   
    .newsletter-card .nl-consent{ margin-top: 14px; font-size: .95rem; }
    .newsletter-card .nl-msg{ margin-top: 14px; color:#28a745; font-weight: 800; }
    .newsletter-card .nl-err{ margin-top: 14px; color:#dc3545; font-weight: 800; }
@@ -323,7 +326,6 @@
      section{ padding: var(--space-3) var(--space-2); }
      main{ padding-block-start: 4.5rem; }
    }
-   
    /* Mobile */
    @media (max-width: 48rem){
      :where(section p){
@@ -342,16 +344,16 @@
        margin-block: var(--space-3);
        border-radius: 12px;
      }
-   
-     /* Κρατάμε το newsletter button στενό & κεντραρισμένο και σε mobile */
+     /* Keep newsletter button full-width-friendly if stacked */
+     .newsletter-card .nl-row{ flex-direction: column; gap: var(--space-2); }
+     .newsletter-card .nl-btn{ width: 100%; }
+     /* Keep CTA centered and narrow */
      #newsletter-button{ width: max-content !important; margin-left:auto; margin-right:auto; }
    }
-   
    /* Tiny phones */
    @media (max-width: 26.25rem){
      header{ padding: 8px clamp(.75rem,3vw,1rem); }
      main{ padding-block-start: 4rem; }
-     /* μην κάνεις όλα τα .cta-button full-width εδώ, για να μην χαλάει το κεντράρισμα */
      nav a{ margin-inline: clamp(.5rem,3vw,.75rem); }
    }
    
@@ -362,8 +364,6 @@
      html, body{ min-height: 100dvh; }
    }
    
-   /* ================================
-      Optional: tighter first-section top spacing
-      ================================ */
+   /* Optional: tighter first-section top spacing */
    main > section:first-of-type{ margin-top: calc(var(--space-3) * 0.5); }
    
